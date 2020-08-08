@@ -52,6 +52,6 @@ CREATE TABLE salaries (
 );
 
 -- View table columns and datatypes
-SELECT * FROM employees;
+SELECT * FROM titles;
 
 --Junction Table
