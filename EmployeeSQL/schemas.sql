@@ -1,31 +1,29 @@
 -- Drop table if exists
-DROP TABLE employees;
+DROP TABLE departments;
 
 --Titles Table
 CREATE TABLE titles(
-	title_id VARCHAR,
-	title VARCHAR,
-	PRIMARY KEY (title)
+	title_id VARCHAR NOT NULL,
+	title VARCHAR NOT NULL,
+	PRIMARY KEY (title_id)
 );
 
 --Employee Table
 CREATE TABLE employees (
-	emp_no VARCHAR, PRIMARY KEY
-	emp_title VARCHAR,
-	birth_date DATE,
-	first_name VARCHAR,
-	last_name VARCHAR,
-	sex VARCHAR,
-	hire_date DATE
-	FOREIGN KEY (emp_title) REFERENCES titles.title_id
-	PRIMARY KEY
+	emp_no VARCHAR PRIMARY KEY,
+	emp_title VARCHAR NOT NULL,
+	birth_date DATE NOT NULL,
+	first_name VARCHAR NOT NULL,
+	last_name VARCHAR NOT NULL,
+	sex VARCHAR NOT NULL,
+	hire_date DATE NOT NULL,
+	FOREIGN KEY (emp_title) REFERENCES titles (title_id)
 );
 
 --Departments Table
 CREATE TABLE departments (
-	dept_no VARCHAR NOT NULL,
-	dept_name VARCHAR NOT NULL,
-	PRIMARY KEY (dept_no) 
+	dept_no VARCHAR PRIMARY KEY NOT NULL,
+	dept_name VARCHAR NOT NULL
 );
 
 --Dept Manager Table
@@ -41,7 +39,7 @@ CREATE TABLE dept_manager (
 CREATE TABLE dept_emp (
 	emp_no VARCHAR NOT NULL,
 	dept_no VARCHAR NOT NULL,
-	FOREIGN KEY (emp_no) REFERENCES employee (emp_no)
+	FOREIGN KEY (emp_no) REFERENCES employees(emp_no),
 	PRIMARY KEY (emp_no, dept_no)
 );
 
@@ -52,6 +50,4 @@ CREATE TABLE salaries (
 );
 
 -- View table columns and datatypes
-SELECT * FROM titles;
-
---Junction Table
+SELECT * FROM employees;
