@@ -1,6 +1,3 @@
--- Drop table if exists
-DROP TABLE departments;
-
 --Titles Table
 CREATE TABLE titles(
 	title_id VARCHAR NOT NULL,
